@@ -32,7 +32,6 @@ export const authOptions: AuthOptions = {
 			},
 			async authorize(credentials) {
 				if (!credentials?.email || !credentials?.password) {
-					// console.log(credentials, '------------')
 					throw new Error('Invalid Credentials')
 				}
 
@@ -44,7 +43,6 @@ export const authOptions: AuthOptions = {
 				if (!user || !user?.hashedPassword) {
 					throw new Error('Invalid credentials')
 				}
-				console.log(credentials?.password, '---------------------------')
 				const isCorrectPassword = await bcrypt.compare(
 					credentials?.password || '',
 					user.hashedPassword
